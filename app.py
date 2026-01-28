@@ -1,23 +1,27 @@
 from bottle import Bottle, run, template, request, redirect
 import random, math
 
+#PREFIX = "/cards2026"  	# on the server
+PREFIX = ""		# on local machine
+
 app = Bottle()
 
 # lista globale eventi click
 carte_cliccate = []
 mazzo_ordinato = []
 
-@app.route('/')
+
+@app.route(PREFIX + '/')
 def index():
     redirect('/carte')
 
 
-@app.route('/reset')
+@app.route(PREFIX +'/reset')
 def reset():
     carte_cliccate.clear()
-    redirect('/carte')
+    redirect(PREFIX +'/carte')
 
-@app.route('/carte')
+@app.route(PREFIX +'/carte')
 def carte():
     semi = [
         {"simbolo": "♥", "codice": "H", "colore": "text-danger"},
@@ -55,7 +59,7 @@ def carte():
         count=len(carte_cliccate)
     )
 
-@app.post('/send')
+@app.post(PREFIX +'/send')
 def send():
     codice = request.forms.get('codice')
 
@@ -71,7 +75,7 @@ def send():
     carte_cliccate.append(codice)
     return {"status": "ok", "count": len(carte_cliccate)}
     
-@app.route('/schermo')
+@app.route(PREFIX +'/schermo')
 def schermo():
     # prime 5 carte cliccate
     selezionate = carte_cliccate[:5]
