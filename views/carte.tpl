@@ -119,11 +119,11 @@ body {
 
 <!-- BOTTONI -->
 <div class="text-center mt-4">
-    <a href="/reset" class="btn btn-danger me-3">
+    <a href="reset" class="btn btn-danger me-3">
         🔄 Reset
     </a>
 
-    <a href="/schermo"
+    <a href=schermo"
        id="btn-schermo"
        target="_blank"
        rel="noopener noreferrer"

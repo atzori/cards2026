@@ -11,17 +11,17 @@ carte_cliccate = []
 mazzo_ordinato = []
 
 
-@app.route(PREFIX + '/')
+@app.route('/')
 def index():
-    redirect('/carte')
+    redirect(PREFIX + '/carte')
 
 
-@app.route(PREFIX +'/reset')
+@app.route('/reset')
 def reset():
     carte_cliccate.clear()
     redirect(PREFIX +'/carte')
 
-@app.route(PREFIX +'/carte')
+@app.route('/carte')
 def carte():
     semi = [
         {"simbolo": "♥", "codice": "H", "colore": "text-danger"},
@@ -59,7 +59,7 @@ def carte():
         count=len(carte_cliccate)
     )
 
-@app.post(PREFIX +'/send')
+@app.post('/send')
 def send():
     codice = request.forms.get('codice')
 
@@ -75,7 +75,7 @@ def send():
     carte_cliccate.append(codice)
     return {"status": "ok", "count": len(carte_cliccate)}
     
-@app.route(PREFIX +'/schermo')
+@app.route('/schermo')
 def schermo():
     # prime 5 carte cliccate
     selezionate = carte_cliccate[:5]
