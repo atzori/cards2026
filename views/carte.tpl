@@ -123,7 +123,7 @@ body {
         🔄 Reset
     </a>
 
-    <a href=schermo"
+    <a href="schermo"
        id="btn-schermo"
        target="_blank"
        rel="noopener noreferrer"
@@ -176,7 +176,7 @@ $(function () {
         const parita = card.data('parita');
         const back = card.find('.card-back');
 
-        $.post('/send', { codice }, function (res) {
+        $.post('send', { codice }, function (res) {
 
             if (res.status !== 'ok') return;
 

@@ -1,8 +1,8 @@
 from bottle import Bottle, run, template, request, redirect
 import random, math
 
-#PREFIX = "/cards2026"  	# on the server
 PREFIX = ""		# on local machine
+#PREFIX = "/cards2026"  	# on the server
 
 app = Bottle()
 
@@ -137,6 +137,9 @@ def riordina(carte_cliccate):
 	
 	for c in carte_scelte:
 	    mazzo.remove(c)
+	mazzo = mazzo[:24] + mazzo[24:][::-1]
+
+
 	print("len mazzo",len(mazzo))
 	
 	indice_0based = mazzo.index(carta_da_indovinare) # da 0 a 47
