@@ -1,8 +1,13 @@
 from bottle import Bottle, run, template, request, redirect
 import random, math
 
+import socket
+
+ip_locale = socket.gethostbyname(socket.gethostname())
+
 PREFIX = ""		# on local machine
-#PREFIX = "/cards2026"  	# on the server
+if not ip_locale.startswith("127.0"):
+    PREFIX = "/cards2026"  	# on the server
 
 app = Bottle()
 
