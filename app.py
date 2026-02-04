@@ -187,9 +187,10 @@ def riordina_mnemonico(carte_cliccate):
 		print("seme da indovinare", carta_da_indovinare[-1])
 		i = semiK.index(carta_da_indovinare[1])
 		print("indice del seme da indovinare",i)
-		carte_scelte = [c for c in sorted(carte_cliccate[:4]) if c[0]!="K"]
+		carte_scelte_per_seme = [c for c in carte_scelte if c[0]!="K"]
+		print("carte scelte per il seme",carte_scelte_per_seme)
 
-		nuova_carta_da_indovinare = carte_scelte[i]
+		nuova_carta_da_indovinare = carte_scelte_per_seme[i]
 		print("nuova carta da indovinare",nuova_carta_da_indovinare)
 
 		carte_cliccate[-1] = nuova_carta_da_indovinare
