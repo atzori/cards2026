@@ -117,7 +117,92 @@ def schermo():
     carte[-1]['colore'] = meta_del_mazzo
     return template("schermo", carte=carte)
 
+# riordina localmente carte_cliccate e restituisce il colore della ultima carta
+
 def riordina(carte_cliccate):
+	#return riordina_matematicamente(carte_cliccate)
+	return riordina_mnemonico(carte_cliccate)
+
+def riordina_mnemonico(carte_cliccate):
+	carta_da_indovinare = carte_cliccate[-1]
+	carte_scelte = carte_cliccate[:4]
+	carte_scelte.sort(key=lambda x: mazzo_ordinato.index(x))
+	print("carte scelte ordinate", carte_cliccate)
+	print("carta da indovinare", carta_da_indovinare)
+		
+	
+	if carta_da_indovinare[0] != "K": # se non e' un Re
+		i = "HDCS".index(carta_da_indovinare[-1])	
+		permutazione = [carte_scelte[i], None, None, None] # inserisco il seme
+		carte_scelte.pop(i)
+
+		n = carta_da_indovinare[:-1]
+		if n=="J": n="11"
+		elif n=="Q": n="12"
+		n = int(n)
+		
+		if n>6:
+			n-=6
+			meta_del_mazzo = 1
+		else:	
+			meta_del_mazzo = 0
+		
+		if n>3:
+			n-=3
+			swap = True
+		else:
+			swap = False
+	
+		print("n",n)
+		print("carte scelte",carte_scelte)
+		permutazione[1] = carte_scelte[n-1]
+		carte_scelte.pop(n-1)
+		
+		if not swap:
+			permutazione[2:4] = carte_scelte
+		else: 
+			permutazione[2:4] = carte_scelte[::-1]
+	
+	
+		if not swap:
+			permutazione[2:] = carte_scelte
+		else:
+			permutazione[2:] = carte_scelte[::-1]
+		
+		print("permutazione", permutazione)
+		
+
+		carte_cliccate[0:4] = permutazione 	
+		
+		print("nuove carte cliccate", carte_cliccate)
+		return meta_del_mazzo
+	else: # la carta da indovinare è un K
+		# e' necessario codificare una carta diversa da K... quale?
+		semiK = "HDCS"
+		semi_da_scartare = "".join([carta[-1] for carta in carte_scelte if carta[0]=="K"])
+		for s in semi_da_scartare:
+			semiK = semiK.replace(s,"")
+
+		print("semiK",semiK)
+		print("seme da indovinare", carta_da_indovinare[-1])
+		i = semiK.index(carta_da_indovinare[1])
+		print("indice del seme da indovinare",i)
+		carte_scelte = [c for c in sorted(carte_cliccate[:4]) if c[0]!="K"]
+
+		nuova_carta_da_indovinare = carte_scelte[i]
+		print("nuova carta da indovinare",nuova_carta_da_indovinare)
+
+		carte_cliccate[-1] = nuova_carta_da_indovinare
+
+		meta_del_mazzo = riordina_mnemonico(carte_cliccate)
+
+		carte_cliccate[-1] = carta_da_indovinare
+
+		return meta_del_mazzo
+    		
+    		
+
+def riordina_matematicamente(carte_cliccate):
 
 	def n_esima_permutazione(lista, n):
 		lista = lista.copy()
