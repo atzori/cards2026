@@ -51,12 +51,35 @@
     align-items: center;
 }
 
-.card-back.red {
+
+.card-back.red  {
+    background-image: url("/static/img/napoletane_back.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0 0 18px rgba(0,0,0,.85);
+    border: 1px solid #111;
+}
+
+.card-back.redold {
     background: radial-gradient(circle, #ff6b6b, #b11226);
+    box-shadow: 0 0 20px rgba(220,53,69,.8);
+}
+
+.card-back.blueold {
+    background: radial-gradient(circle, #6ea8fe, #084298);
+    box-shadow: 0 0 20px rgba(13,110,253,.8);
 }
 
 .card-back.blue {
-    background: radial-gradient(circle, #6ea8fe, #084298);
+    background-image: url("/static/img/napoletane_back2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0 0 18px rgba(0,0,0,.85);
+    border: 1px solid #111;
 }
 
 .bottom {
@@ -88,7 +111,7 @@ body {
         </div>
 
         <!-- BACK -->
-        <div class="card-face card-back">🂠</div>
+        <div class="card-face card-back"><!-- 🂠 --></div>
     </div>
 </div>
 % end

@@ -1,5 +1,7 @@
-from bottle import Bottle, run, template, request, redirect
+from bottle import Bottle, run, template, request, redirect, static_file
 import random, math
+
+
 
 import socket
 
@@ -14,6 +16,17 @@ app = Bottle()
 # lista globale eventi click
 carte_cliccate = []
 mazzo_ordinato = []
+
+
+# Rotta per servire file statici
+@app.route('/static/<filepath:path>')
+def server_static(filepath):
+    # 'root' indica la cartella locale dove si trovano i file
+    return static_file(filepath, root='./static')
+
+# Esempio di utilizzo:
+# Se hai file in ./static/css/style.css
+# Sarà accessibile via: http://localhost:8080/static/css/style.css
 
 
 @app.route('/')
@@ -111,7 +124,7 @@ def schermo():
             "numero": valori_map[valore],
             "seme": semi_map[seme],
             "codice": codice,
-            "colore": valori_map[valore] % 2 ^ 1 # xor inverte la parita' di numero
+            "colore": meta_del_mazzo #valori_map[valore] % 2 ^ 1 # xor inverte la parita' di numero
         })
 
     carte[-1]['colore'] = meta_del_mazzo
@@ -139,6 +152,7 @@ def riordina_mnemonico(carte_cliccate):
 		n = carta_da_indovinare[:-1]
 		if n=="J": n="11"
 		elif n=="Q": n="12"
+		elif n=="A": n="1"
 		n = int(n)
 		
 		if n>6:
