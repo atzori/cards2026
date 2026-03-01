@@ -53,7 +53,7 @@
 
 
 .card-back.red  {
-    background-image: url("/static/img/napoletane_back.png");
+    background-image: url("static/img/napoletane_back.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -73,7 +73,7 @@
 }
 
 .card-back.blue {
-    background-image: url("/static/img/napoletane_back2.png");
+    background-image: url("static/img/napoletane_back2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
