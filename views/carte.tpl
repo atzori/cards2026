@@ -121,7 +121,7 @@ body {
 
 <!-- BOTTONI -->
 <div class="text-center mt-4">
-    <a href="reset" class="btn btn-danger me-3">
+    <!-- <a href="reset" class="btn btn-danger me-3">
         🔄 Reset
     </a>
 
@@ -131,11 +131,11 @@ body {
        rel="noopener noreferrer"
        class="btn btn-warning btn-lg {{'disabled' if count < 5 else ''}}">
         🎰 Vai allo schermo
-    </a>
+    </a> -->
 
     <div class="text-light mt-2">
-        Carte selezionate: <span id="counter">{{count}}</span> / 5
-    </div>
+        <span id="counter">{{count}}</span> / 5
+    </div> 
 </div>
 
 
@@ -171,26 +171,30 @@ $(function () {
 
     $('.card').on('click', function () {
         const card = $(this);
+        console.log('card click')
 
-        if (card.data('locked') === true) return;
+        //if (card.data('locked') === true) return;
 
         const codice = card.data('codice');
         const parita = card.data('parita');
         const back = card.find('.card-back');
+        console.log('card click '+ codice)
 
         $.post('send', { codice }, function (res) {
 
             if (res.status !== 'ok') return;
 
             back.addClass(parita === 'pari' ? 'blue' : 'red');
-            card.addClass('flipped locked')
-                .data('locked', true);
+            $(card).toggleClass('flipped');
+
+            /*card.addClass('flipped locked')
+                .data('locked', true);*/
 
             $('#counter').text(res.count);
 
-            if (res.count === 5) {
+            /*if (res.count === 5) {
                 $('#btn-schermo').removeClass('disabled');
-            }
+            }*/
         });
     });
 

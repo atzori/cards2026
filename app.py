@@ -84,13 +84,19 @@ def send():
     if not codice:
         return {"status": "error"}
 
-    if codice in carte_cliccate:
-        return {"status": "ignored"}
+    #if codice in carte_cliccate:
+    #    return {"status": "ignored"}
 
-    if len(carte_cliccate) >= 5:
+    if len(carte_cliccate) >= 5 and codice not in carte_cliccate:
         return {"status": "full"}
 
-    carte_cliccate.append(codice)
+    print('prima',carte_cliccate)
+    if codice in carte_cliccate:
+    	carte_cliccate.remove(codice)    	
+    else:
+    	carte_cliccate.append(codice)
+    print('dopo',carte_cliccate)
+
     return {"status": "ok", "count": len(carte_cliccate)}
     
 @app.route('/schermo')
