@@ -92,7 +92,7 @@ body {
 <body>
 
 <div class="container py-4">
-<h1 class="text-center text-light mb-4">🎰 Casino Cards</h1>
+<!--<h1 class="text-center text-light mb-4">🎰 Casino Cards</h1>-->
 
 <div class="row g-3 justify-content-center">
 % for carta in carte:

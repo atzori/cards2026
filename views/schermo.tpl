@@ -95,7 +95,7 @@ body {
 <body>
 
 <div class="container py-5 text-center">
-<h1 class="text-light mb-5">🎰 Schermo</h1>
+<!--<h1 class="text-light mb-5">🎰 Schermo</h1> -->
 
 <div class="d-flex justify-content-center gap-4">
 % for carta in carte:
