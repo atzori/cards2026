@@ -121,7 +121,7 @@ body {
 
 <!-- BOTTONI -->
 <div class="text-center mt-4">
-    <!-- <a href="reset" class="btn btn-danger me-3">
+    <a href="reset" class="btn btn-danger me-3">
         🔄 Reset
     </a>
 
@@ -131,7 +131,7 @@ body {
        rel="noopener noreferrer"
        class="btn btn-warning btn-lg {{'disabled' if count < 5 else ''}}">
         🎰 Vai allo schermo
-    </a> -->
+    </a> 
 
     <div class="text-light mt-2">
         <span id="counter">{{count}}</span> / 5
@@ -192,9 +192,11 @@ $(function () {
 
             $('#counter').text(res.count);
 
-            /*if (res.count === 5) {
+            if (res.count === 5) {
                 $('#btn-schermo').removeClass('disabled');
-            }*/
+            } else {
+                $('#btn-schermo').addClass('disabled');
+            }
         });
     });
 
