@@ -117,7 +117,7 @@ body {
 % end
 </div>
 
- <a href="carte" class="btn btn-light mt-5">⬅ Torna alle carte</a> 
+<!-- <a href="carte" class="btn btn-light mt-5">⬅ Torna alle carte</a> -->
 </div>
 
 <script>

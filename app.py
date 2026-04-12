@@ -104,6 +104,8 @@ def schermo():
     # prime 5 carte cliccate
     selezionate = carte_cliccate[:5]
 
+    if len(selezionate)<5:
+	    return template("schermo", carte=[])
 
     meta_del_mazzo = riordina(selezionate)
 
